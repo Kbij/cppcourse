@@ -50,16 +50,6 @@ if [ ! -f sysroot-x86/include/lua.h ]; then
 	tar -xf sys-x86.tar.gz
 fi
 
-cd $cwd/libraries
-if [ ! -f qt/components.xml ]; then
-	echo "download x86 qt"
-	get_ftp_file "qt.tar.gz"
-
-	echo "Unpacking qt"
-	tar -xf qt.tar.gz
-fi
-
-
 cd $cwd/build-arm
 cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=toolchain-arm.cmake ..;
 make -j2

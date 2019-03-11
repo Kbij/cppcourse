@@ -1,0 +1,81 @@
+{
+	"folders": [
+	  {
+		"path": "."
+	  }
+	],
+	"settings": {
+	  "files.associations": {
+			"ostream": "cpp",
+			"iosfwd": "cpp",
+			"array": "cpp",
+			"atomic": "cpp",
+			"*.tcc": "cpp",
+			"bitset": "cpp",
+			"cctype": "cpp",
+			"chrono": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"complex": "cpp",
+			"condition_variable": "cpp",
+			"csignal": "cpp",
+			"cstdarg": "cpp",
+			"cstddef": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"list": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"hash_map": "cpp",
+			"hash_set": "cpp",
+			"slist": "cpp",
+			"fstream": "cpp",
+			"functional": "cpp",
+			"future": "cpp",
+			"initializer_list": "cpp",
+			"iomanip": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"mutex": "cpp",
+			"new": "cpp",
+			"numeric": "cpp",
+			"ratio": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"system_error": "cpp",
+			"thread": "cpp",
+			"cinttypes": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
+			"typeindex": "cpp",
+			"typeinfo": "cpp",
+			"utility": "cpp",
+			"valarray": "cpp",
+			"codecvt": "cpp",
+			"strstream": "cpp"
+		},
+	  "cmake.buildDirectory": "${workspaceRoot}/build-code",
+	  "cmake.configureSettings": {
+		"CMAKE_BUILD_TYPE": "Debug",
+		"CMAKE_TOOLCHAIN_FILE": "toolchain-x86.cmake"
+	  },
+	  "C_Cpp.default.cppStandard": "c++11",
+		"cmake.configureOnOpen": true,
+		"C_Cpp.default.intelliSenseMode": "gcc-x64",
+		"C_Cpp.default.includePath": [
+			"${workspaceRoot}",
+			"${workspaceRoot}/libraries/sysroot-x86"
+		]
+	
+	}
+  }
