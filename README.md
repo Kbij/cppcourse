@@ -1,0 +1,2 @@
+# cppcourse
+Basic cmake environment
