@@ -1,0 +1,79 @@
+#!/bin/bash
+echo "Building CPP Cource"
+cwd=$(pwd)
+
+#Ftp data
+HOST='192.168.75.3'
+USER='Jenkins'
+PASSWD='Jk1234'
+
+get_ftp_file()
+{
+filename=$1
+ftp -n -v -p $HOST <<EOT
+binary
+user $USER $PASSWD
+cd web
+cd svn_binaries
+get $filename
+quit
+exit 0
+EOT
+
+}
+
+if [ ! -f ./toolchain/gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux/bin/arm-linux-gnueabihf-c++ ]; then
+	echo "Download gcc"
+	cd toolchain
+	get_ftp_file "gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux.tar.xz"
+
+
+    echo "Unpacking gcc"
+    tar -xf gcc-linaro-arm-linux-gnueabihf-4.9-2014.09_linux.tar.xz
+fi
+
+cd $cwd/libraries
+if [ ! -f sysroot-arm/include/lua.h ]; then
+	echo "download arm sysroot"
+	get_ftp_file "sys-arm.tar.gz"
+
+	echo "Unpacking sysroot-arm"
+	tar -xf sys-arm.tar.gz
+fi
+
+cd $cwd/libraries
+if [ ! -f sysroot-x86/include/lua.h ]; then
+	echo "download x86 sysroot"
+	get_ftp_file "sys-x86.tar.gz"
+
+	echo "Unpacking sysroot-x86"
+	tar -xf sys-x86.tar.gz
+fi
+
+cd $cwd/libraries
+if [ ! -f qt/components.xml ]; then
+	echo "download x86 qt"
+	get_ftp_file "qt.tar.gz"
+
+	echo "Unpacking qt"
+	tar -xf qt.tar.gz
+fi
+
+
+cd $cwd/build-arm
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=toolchain-arm.cmake ..;
+make -j2
+
+if [[ $? -ne 0 ]] ; then
+    exit 1
+fi
+
+cd $cwd/build-x86
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=toolchain-x86.cmake ..;
+make -j2
+
+if [[ $? -ne 0 ]] ; then
+    exit 1
+fi
+
+
